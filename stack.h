@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:30:31 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/01/28 09:24:06 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:28:26 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ typedef struct s_stack {
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
 char	**ft_split(char const *s, char c);
+
+// STACK
+int		init_stack(t_stack *a, char **args)
 
 #endif

@@ -1,46 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 16:30:03 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/02/11 10:28:19 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/27 10:34:29 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/10/27 10:34:32 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
 #include <stdlib.h>
-#include <stdio.h>
 
-int	init_stack(t_stack *a, char **args)
+char	*ft_strchr(const char *s, int c)
 {
-	t_stack	*stack;
+	int	i;
 
-	stack = NULL;
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	return (stack);
-}
-
-int	is_stack_sorted(t_stack *a)
-{
-	if (a == NULL)
-		return (1);
-	while (a->next)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (a->value > a->next->value)
-			return (0);
-		a = a->next;
+		if ((unsigned char) c == s[i])
+			return ((char *) s + i);
+		i++;
 	}
-	return (1);
-}
-// t_stack	*insert_to_stack(t_stack *stack, int i)
-// {
-
-// }
-
-void ola()
-{
-	printf("ola\n");
+	if ((unsigned char) c == s[i])
+		return ((char *) s + i);
+	return (NULL);
 }

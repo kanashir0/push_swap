@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 16:30:31 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/02/11 10:28:26 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/27 09:40:38 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/10/27 10:19:02 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#include "libft.h"
 
-# include <stdlib.h>
-
-typedef struct s_stack {
-	int				value;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}					t_stack;
-
-
-// LIBFT
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dest, const char *src, size_t n);
-char	**ft_split(char const *s, char c);
-
-// STACK
-int		init_stack(t_stack *a, char **args)
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst == NULL || f == NULL)
+		return ;
+	while (lst != NULL)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
+	return ;
+}

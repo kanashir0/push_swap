@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 10:35:31 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/01/28 09:24:34 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/27 09:26:33 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/10/27 09:36:51 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
+	t_list	*buf;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	i = 0;
-	while (src[i] && (i < size - 1))
+	if (lst == NULL)
+		return ;
+	while (*lst)
 	{
-		dest[i] = src[i];
-		i++;
+		buf = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = buf;
 	}
-	dest[i] = '\0';
-	return (ft_strlen(src));
+	*lst = NULL;
+	return ;
 }

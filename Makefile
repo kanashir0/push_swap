@@ -6,48 +6,60 @@
 #    By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 14:58:26 by gyasuhir          #+#    #+#              #
-#    Updated: 2025/01/28 09:26:47 by gyasuhir         ###   ########.fr        #
+#    Updated: 2025/04/02 21:04:25 by gyasuhir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAIN = main.c
-SRCS = stack.c \
-		ft_split.c \
-		ft_strlen.c \
-		ft_strlcpy.c
+# Compiler vars
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-VALGRIND_LOG = valgrind.log
-
-INCLUDES = stack.h
+SRCS = 	main.c \
+		stack_init.c \
+		stack_utils.c \
+		push.c \
+		rotate.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 
 NAME = push_swap
 
-all: $(NAME)
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+PRINTF_DIR = ft_printf
+PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-$(NAME): $(OBJECTS)
-	cc -Wall -Wextra -Werror main.c $(NAME).a -o $(NAME)
+all: $(NAME) $(LIBFT) $(PRINTF)
+
+$(NAME): $(OBJECTS) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.c
-	cc -Wall -Wextra -Werror -c $< -o $@
-	ar rcs $(NAME).a $@
+	$(CC) -Wall -Wextra -Werror -c $< -o $@
 
-clean:
-	rm -f $(OBJECTS) $(NAME).a
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
+$(PRINTF):
+	$(MAKE) -C $(PRINTF_DIR)
 
 valgrind:
-	@valgrind --leak-check=full \
+	valgrind --leak-check=full \
 	--show-reachable=yes \
 	--show-leak-kinds=all -s \
 	--track-origins=yes \
-	--log-file=$(VALGRIND_LOG) \
 	./$(NAME)
-	@cat $(VALGRIND_LOG)
 
-.PHONY: all bonus clean fclean re
+clean:
+	rm -f $(OBJECTS)
+	$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(PRINTF_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C $(PRINTF_DIR)
+
+re: fclean all
+
+.PHONY: all clean fclean re valgrind

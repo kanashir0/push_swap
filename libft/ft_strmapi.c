@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 14:13:55 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 18:03:20 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/24 19:00:50 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/10/27 10:35:52 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	size_t	len;
+	size_t	i;
+	char	*res;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, argc == 2);
-	
-	return (0);
+	if (!s || (!s && !f))
+		return (ft_strdup(""));
+	else if (!f)
+		return (ft_strdup(s));
+	len = ft_strlen(s);
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (res == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		res[i] = (*f)(i, s[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

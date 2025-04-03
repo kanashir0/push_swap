@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 14:13:55 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 18:03:20 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/27 10:32:15 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/10/27 10:32:21 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	unsigned char	*cs1;
+	unsigned char	*cs2;
+	size_t			i;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, argc == 2);
-	
+	if (n == 0)
+		return (0);
+	cs1 = (unsigned char *) s1;
+	cs2 = (unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (cs1[i] != cs2[i])
+			return (cs1[i] - cs2[i]);
+		i++;
+	}
 	return (0);
 }

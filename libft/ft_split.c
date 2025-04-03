@@ -6,11 +6,11 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 15:12:04 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/01/28 09:24:30 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:31:53 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libft.h"
 
 static void	*ft_free_arr(char **arr)
 {
@@ -75,12 +75,11 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	int		i;
 
-	if (s == NULL)
-		return (NULL);
-	arr = (char **) malloc((ft_count_word(s, c) + 1) * sizeof(char *));
+	arr = (char **) malloc((ft_count_word(s, c) + 2) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
-	i = 0;
+	arr[0] = NULL;
+	i = 1;
 	while (*s)
 	{
 		while (*s && *s == c)

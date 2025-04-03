@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 14:13:55 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 18:03:20 by gyasuhir         ###   ########.fr       */
+/*   Created: 2024/10/20 10:35:37 by gyasuhir          #+#    #+#             */
+/*   Updated: 2024/11/02 11:50:44 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	unsigned char	*cdest;
+	unsigned char	*csrc;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, argc == 2);
-	
-	return (0);
+	if (src == dest)
+		return (dest);
+	cdest = (unsigned char *) dest;
+	csrc = (unsigned char *) src;
+	if (dest <= src)
+	{
+		while (n-- > 0)
+			*cdest++ = *csrc++;
+	}
+	else if (dest > src)
+	{
+		cdest += n - 1;
+		csrc += n - 1;
+		while (n-- > 0)
+			*cdest-- = *csrc--;
+	}
+	return (dest);
 }

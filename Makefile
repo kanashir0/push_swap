@@ -6,7 +6,7 @@
 #    By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 14:58:26 by gyasuhir          #+#    #+#              #
-#    Updated: 2025/04/02 21:04:25 by gyasuhir         ###   ########.fr        #
+#    Updated: 2025/04/03 20:08:44 by gyasuhir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ SRCS = 	main.c \
 		stack_init.c \
 		stack_utils.c \
 		push.c \
-		rotate.c
+		swap.c \
+		rotate.c \
+		reverse_rotate.c \
+		sort_three.c \
+		handle_errors.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 

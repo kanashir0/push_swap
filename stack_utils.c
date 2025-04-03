@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:02:22 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/03 19:26:44 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:50:29 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,6 @@ t_stack_node	*get_last_node(t_stack_node *stack)
 	return (stack);
 }
 
-void	append_node(t_stack_node **stack, int nbr)
-{
-	t_stack_node	*node;
-	t_stack_node	*last_node;
-
-	if (stack == NULL)
-		return ;
-	node = (t_stack_node *)malloc(sizeof(t_stack_node));
-	if (node == NULL)
-		return ;
-	node->next = NULL;
-	node->value = nbr;
-	if (*stack == NULL)
-	{
-		*stack = node;
-		node->prev = NULL;
-	}
-	else
-	{
-		last_node = get_last_node(*stack);
-		last_node->next = node;
-		node->prev = last_node;
-	}
-}
-
 bool	stack_sorted(t_stack_node *stack)
 {
 	if (stack == NULL)
@@ -57,4 +32,40 @@ bool	stack_sorted(t_stack_node *stack)
 		stack = stack->next;
 	}
 	return (true);
+}
+
+int	stack_len(t_stack_node *stack)
+{
+	int	count;
+
+	if (stack == NULL)
+		return ;
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
+}
+
+t_stack_node	*find_max(t_stack_node *stack)
+{
+	long			max;
+	t_stack_node	*max_node;
+
+	if (stack == NULL)
+		return (NULL);
+	
+	max = LONG_MIN;
+	while (stack)
+	{
+		if (stack->value > max)
+		{
+			max = stack->value;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);
 }

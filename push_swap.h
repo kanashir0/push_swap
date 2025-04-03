@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:30:31 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 21:18:51 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/03 19:26:59 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,44 @@
 # include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_stack_node {
-	int				value;
-	t_stack_node	*next;
-	t_stack_node	*prev;
-}					t_stack_node;
+	int					value;
+	int					index;
+	int					push_cost;
+	bool				above_median;
+	bool				cheapest;
+	struct s_stack_node *target_node;
+	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
+}						t_stack_node;
 
+// Handle errors
 
-// STACK
+// Stack initialization
 void	stack_init(t_stack_node **a, char **argv, int flag_argc_2);
+
+// Nodes initialization
+
+// Stack utils
 t_stack_node	*get_last_node(t_stack_node *stack);
+bool	stack_sorted(t_stack_node *stack);
+
+// Commands
+void	sa(t_stack_node **a);
+void	sb(t_stack_node **b);
+void	ra(t_stack_node **a);
+void	rb(t_stack_node **b);
+void	rr(t_stack_node **a, t_stack_node **b);
+void	rra(t_stack_node **a);
+void	rrb(t_stack_node **b);
+void	rrr(t_stack_node **a, t_stack_node **b);
+void	pa(t_stack_node **b, t_stack_node **a);
+void	pb(t_stack_node **a, t_stack_node **b);
+
+// Algorithm
+
+
 
 #endif

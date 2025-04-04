@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:30:03 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/03 20:47:09 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:41:50 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,19 @@ void	stack_init(t_stack_node **a, char **argv, int flag_argc_2)
 	}
 	if (flag_argc_2)
 		free_matrix(argv);
-	return (1);
+	return ;
+}
+
+void	min_to_top(t_stack_node **a)
+{
+	t_stack_node	*min_node;
+
+	min_node = find_min(*a);
+	while ((*a)->value != min_node->value)
+	{
+		if (min_node->above_median)
+			ra(a);
+		else
+			rra(a);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 20:55:08 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 21:24:22 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:53:51 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	push(t_stack_node **src, t_stack_node **dest)
 	if (*src == NULL)
 		return ;
 	node_to_push = *src;
-	*src = (*src)->prev;
+	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
 	node_to_push->prev = NULL;

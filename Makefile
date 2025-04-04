@@ -6,7 +6,7 @@
 #    By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 14:58:26 by gyasuhir          #+#    #+#              #
-#    Updated: 2025/04/03 20:08:44 by gyasuhir         ###   ########.fr        #
+#    Updated: 2025/04/04 18:47:11 by gyasuhir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ SRCS = 	main.c \
 		rotate.c \
 		reverse_rotate.c \
 		sort_three.c \
-		handle_errors.c
+		handle_errors.c \
+		sort_stacks.c \
+		init_a_to_b.c \
+		init_b_to_a.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 
@@ -52,7 +55,7 @@ valgrind:
 	--show-reachable=yes \
 	--show-leak-kinds=all -s \
 	--track-origins=yes \
-	./$(NAME)
+	./$(NAME) 7 10 45 -420 70
 
 clean:
 	rm -f $(OBJECTS)

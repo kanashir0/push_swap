@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 21:13:03 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/02 21:25:45 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:13:40 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ void	rrr(t_stack_node **a, t_stack_node **b)
 	reverse_rotate(a);
 	reverse_rotate(b);
 	ft_printf("rrr\n");
+}
+
+void	rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+{
+	while (*a != cheapest_node && *b != cheapest_node->target_node)
+		rrr(a, b);
+	current_index(*a);
+	current_index(*b);
 }

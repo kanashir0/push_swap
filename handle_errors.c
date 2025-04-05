@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:08:55 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/05 00:27:12 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:12:10 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 bool	error_syntax(char *n)
 {
+	int	size;
+
+	size = 0;
 	if (!(*n == '+' || *n == '-' || (*n >= '0' && *n <= '9')))
 		return (true);
 	if ((*n == '+' || *n == '-') && !(n[1] >= '0' && n[1] <= '9'))
 		return (true);
 	while (*++n)
 	{
-		if (!(*n >= '0' && *n <= '9'))
+		if (!(*n >= '0' && *n <= '9') || size > 13)
 			return (true);
+		size++;
 	}
 	return (false);
 }

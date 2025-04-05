@@ -6,13 +6,16 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:51:53 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/04 19:40:27 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:30:52 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+void	prep_for_push(
+	t_stack_node **stack,
+	t_stack_node *top_node,
+	char stack_name)
 {
 	while (*stack != top_node)
 	{
@@ -51,9 +54,11 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	t_stack_node	*cheapest_node;
 
 	cheapest_node = get_cheapest(*a);
-	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
+	if (cheapest_node->above_median
+		&& cheapest_node->target_node->above_median)
 		rotate_both(a, b, cheapest_node);
-	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median))
+	else if (!(cheapest_node->above_median)
+		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
@@ -71,21 +76,14 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a > 3 && !stack_sorted(*a))
-	{
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(a, b);
-		len_a--;
-	}
-	if (len_a > 3 && !stack_sorted(*a))
-	{
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(a, b);
-		len_a--;
-	}
-	while (len_a > 3 && !stack_sorted(*a))
+	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
 		move_a_to_b(a, b);
-		len_a--;
 	}
 	sort_three(a);
 	while (*b)

@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:02:22 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/04 19:40:35 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:27:41 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_stack_node	*find_max(t_stack_node *stack)
 
 	if (stack == NULL)
 		return (NULL);
-	
 	max = LONG_MIN;
 	while (stack)
 	{

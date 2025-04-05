@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 18:24:36 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/04/04 19:40:22 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:31:10 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->value > b->value && current_a->value < best_match_index)
+			if (current_a->value > b->value
+				&& current_a->value < best_match_index)
 			{
 				best_match_index = current_a->value;
 				target_node = current_a;
@@ -37,7 +38,6 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 			b->target_node = target_node;
 		b = b->next;
 	}
-	
 }
 
 void	init_nodes_b(t_stack_node *a, t_stack_node *b)

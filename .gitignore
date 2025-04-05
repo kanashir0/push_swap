@@ -3,3 +3,4 @@ checker_linux
 push_swap_tester/
 *.o
 push_swap
+push_tester/
